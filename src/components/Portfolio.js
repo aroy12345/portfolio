@@ -415,18 +415,59 @@ const projects = [
   }
 ];
 
-  const awards = [
-    {
-      title: "USACO Gold Level",
-      year: "2022",
-      description: "Achieved Gold level in USA Computing Olympiad"
-    },
-    {
-      title: "Colorado School of Mines Competition",
-      year: "2022",
-      description: "Top 5 placement in state-wide programming competition"
-    }
-  ];
+const awards = [
+  {
+    title: "USACO Gold Qualifier",
+    year: "2021",
+    description: "Achieved Gold Division qualification in the USA Computing Olympiad, demonstrating exceptional algorithmic problem-solving abilities"
+  },
+  {
+    title: "Colorado School of Mines Top Finisher",
+    year: "2022",
+    description: "Secured top 5 placement in the state-wide programming competition"
+  },
+  {
+    title: "ACSL All Star Nationals",
+    year: "2021",
+    description: "Qualified for the American Computer Science League National Competition"
+  },
+  {
+    title: "Denver Metro Regional Science Fair Awards",
+    year: "2021",
+    description: "Earned Second Place in Computer Science, received the Office of Naval Research Outstanding Project Award, and won First Place in Behavioral Sciences"
+  },
+  {
+    title: "Science Bowl State Finalist",
+    year: "2022",
+    description: "Achieved Colorado State Runner-up (2021) and Third Place (2022) in the National Science Bowl competition"
+  },
+  {
+    title: "Science Olympiad Top 3 State Finisher",
+    year: "2022",
+    description: "Secured six Top 3 finishes in Regional Science Olympiad and three Top 3 State finishes in Chemistry, Geology, and Disease Studies"
+  },
+  {
+    title: "Colorado State Science Fair 2nd Place Chemistry",
+    year: "2022",
+    description: "Awarded Second Place in Chemistry, along with distinguished recognition from CU Anschutz for Outstanding Neuroscience Research and the ASM Materials Education Foundation"
+  },
+  {
+    title: "FBLA Top 5 Nationally + State Officer",
+    year: "2022",
+    description: "Achieved two Top 3 National finishes in Public Speaking and Emerging Business Issues, earned three Top 4 State placements, served as National Council Leader for 3,000 students in the Mountain Plains Region, and as Colorado State Officer representing 2,000 students"
+  },
+  {
+    title: "Speech and Debate Top 20 Nationally",
+    year: "2022",
+    description: "Ranked among the top 20 nationally, secured first place in state for Congressional Debate, achieved Top 3 in state for Humorous Interpretation, advanced to finals in over 25 local/state tournaments, and qualified twice for Nationals"
+  },
+  {
+    title: "Third Degree Black Belt - World Taekwondo Federation",
+    year: "2021",
+    description: "Attained Third Degree Black Belt certification, officially recognized by the World Taekwondo Federation for mastery in forms and techniques"
+  }
+];
+  
 
   const skills = {
     languages: [
