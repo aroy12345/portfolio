@@ -995,7 +995,7 @@ const awards = [
       <footer className="bg-white border-t mt-20">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-600">© 2024 Aryan Roy. </p>
+            <p className="text-gray-600">© 2024 Aryan Roy.</p>
             <div className="flex gap-6">
               <a href="https://github.com" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                 <GithubIcon className="w-6 h-6" />
