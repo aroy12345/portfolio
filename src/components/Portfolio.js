@@ -272,7 +272,7 @@ const projects = [
   {
     "title": "Search Engine",
      media: {
-      images: ["/images/Homepage.png", "/images/Results.png"],  // Optional
+      images: [`${process.env.PUBLIC_URL}/images/Homepage.png`, `${process.env.PUBLIC_URL}/images/Results.png`],  // Optional
              // Optional
            // Optional
     },
@@ -294,7 +294,7 @@ const projects = [
   {
     "title": "PennOS",
     media: {
-      images: ["/images/os.png"],  // Optional
+      images: [`${process.env.PUBLIC_URL}/images/os.png`], 
                   // Optional
                      // Optional
     },
@@ -314,7 +314,11 @@ const projects = [
   {
     "title": "Edu AI App",
     media: {
-      images: ["/images/Flashcards.png", "/images/Quizzes.png", "/images/Plato.png" ],  // Optional
+      images: [
+        `${process.env.PUBLIC_URL}/images/Flashcards.png`, 
+        `${process.env.PUBLIC_URL}/images/Quizzes.png`, 
+        `${process.env.PUBLIC_URL}/images/Plato.png`
+      ],
     
     },
     "description": "AI-powered educational content analysis and generation platform",
@@ -333,7 +337,7 @@ const projects = [
   {
     "title": "Film Fanatic App",
      media: {
-      images: ["/images/movies.png"],  // Optional
+      images: [`${process.env.PUBLIC_URL}/images/movies.png`],
      
     },
     "description": "Feature-rich Android movie discovery and tracking application",
@@ -352,7 +356,7 @@ const projects = [
   {
     "title": "Social Media Clone",
     media: {
-      images: ["/images/Aryan_Twitter.png" ],  // Optional
+      images: [`${process.env.PUBLIC_URL}/images/Aryan_Twitter.png`],
     
     },
     "description": "Full-stack social platform with video sharing capabilities",
@@ -369,7 +373,10 @@ const projects = [
   {
     "title": "Paint GUI & Games",
     media: {
-      images: ["/images/paint.png","/images/ladders.png" ],  // Optional
+      images: [
+        `${process.env.PUBLIC_URL}/images/paint.png`,
+        `${process.env.PUBLIC_URL}/images/ladders.png`
+      ],
     
     },
     "description": "Advanced graphics applications including Paint clone and board games",
@@ -635,7 +642,7 @@ const awards = [
         {/* Illustration Side */}
         <div className="relative w-full md:w-1/2 flex justify-center">
         <img 
-          src="/images/profile.png"
+          src={`${process.env.PUBLIC_URL}/images/profile.png`}
           alt="Aryan Roy - Profile Picture" 
           className="w-80 h-80 rounded-full object-cover shadow-lg hover:shadow-xl transition-shadow duration-300"
         />
@@ -649,6 +656,23 @@ const awards = [
         <GraduationCapIcon className="w-8 h-8 text-blue-600" />
         <h2 className="text-3xl font-bold text-gray-800">Education</h2>
       </div>
+ 
+      <div className="mb-8">
+  <div className="relative overflow-hidden max-w-4xl mx-auto bg-[#02154F] rounded-full">
+    <img 
+      src={`${process.env.PUBLIC_URL}/images/grasp.png`}
+      className="w-full object-contain rounded-full"
+      style={{ 
+        minHeight: "200px",
+        display: "block",
+        margin: "0 auto",
+        padding: "8px 24px"  // Added padding to give it that pill shape look
+      }}
+    />
+  </div>
+</div>
+     
+
       <h3 className="text-2xl font-bold text-gray-800">{education.university}</h3>
       <p className="text-blue-600 font-medium mb-6">{education.duration}</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
