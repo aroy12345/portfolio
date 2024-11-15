@@ -91,7 +91,7 @@ const Portfolio = () => {
       {
         title: "B.S.E. Computer Science",
         concentration: "Artificial Intelligence",
-        gpa: "3.8/4.00",
+        gpa: "3.9/4.00",
         courses: [
           "Analysis of Algorithms",
           "Data Structures",
@@ -103,7 +103,7 @@ const Portfolio = () => {
       },
       {
         title: "B.A. Mathematics",
-        gpa: "3.8/4.00",
+        gpa: "3.95/4.00",
         courses: [
           "Probability",
           "Applied Probability Models",
@@ -113,8 +113,8 @@ const Portfolio = () => {
         ]
       },
       {
-        title: "B.S. Economics",
-        gpa: "3.7/4.00",
+        title: "B.S. Business Economics (Wharton)",
+        gpa: "3.8/4.00",
         concentration: "Statistics & Finance",
         courses: [
           "Big Data Analytics",
@@ -272,17 +272,17 @@ const projects = [
   {
     "title": "Search Engine",
      media: {
-      images: ["/images/results.png", "/images/search2.png"],  // Optional
-      demo_video: "https://example.com/demo.mp4",              // Optional
+      images: ["/images/Homepage.png", "/images/Results.png"],  // Optional
+             // Optional
            // Optional
     },
     "description": "Cloud-based web search engine using AWS EC2, featuring custom multi-threaded web server and distributed crawler",
-    "detailed_description": "Built a scalable distributed search engine from scratch on AWS EC2 with a custom built multi-threaded HTTP server. Implements PageRank and TF-IDF ranking with boolean search capabilities, using AWS S3 for content storage. Features real-time indexing, load balancing, and comprehensive monitoring through a responsive search interface.",
+    "detailed_description": "Built a scalable distributed search engine from scratch on AWS EC2 with a custom built multi-threaded HTTP server. Implements PageRank and TF-IDF ranking, using AWS S3 for content storage. Features real-time indexing, load balancing, and comprehensive monitoring through a responsive search interface.",
     "tech": ["Java", "HTML/CSS", "AWS", "PageRank", "TF-IDF"],
     "features": [
       "Multi-threaded web crawler with robots.txt compliance and rate limiting",
       "Distributed architecture with horizontal scalability",
-      "Real-time indexing and search with PageRank scoring and boolean operators",
+      "Real-time indexing and search with PageRank scoring",
       "Advanced caching system with fault-tolerant, custom developed key-value store",
       "Developed analytics engine with distributed RDD operations (join, fold, distinct)",
       "Real-time monitoring and responsive search interface",
@@ -295,7 +295,7 @@ const projects = [
     "title": "PennOS",
     media: {
       images: ["/images/os.png"],  // Optional
-      demo_video: "https://drive.google.com/file/d/1D7prSb6h1SkUdy89mlWzyCiKI1qEhv4F/view?usp=sharing",              // Optional
+                  // Optional
                      // Optional
     },
     "description": "Simulated operating system environment in C with custom kernel and process management",
