@@ -113,7 +113,7 @@ const Portfolio = () => {
         ]
       },
       {
-        title: "B.S. Business Economics (Wharton)",
+        title: "B.S. Business Administration (Wharton)",
         gpa: "3.8/4.00",
         concentration: "Statistics & Finance",
         courses: [
@@ -158,7 +158,6 @@ const experiences = [
     title: "AI/ML Research Intern",
     company: "Honeywell Aerospace",
     location: "Plymouth, Minnesota",
-    duration: "06/2024 - 09/2024",
     description: [
       "Developed advanced sensor fusion and velocity prediction models integrated with Kalman Filters to enhance drone navigation systems, achieving an 18% improvement in trajectory estimation accuracy.",
       "Implemented Allan Variance analysis techniques in Python to characterize and mitigate gyroscope sensor errors, resulting in a 10% reduction in angular random walk and bias instability.",
@@ -177,7 +176,6 @@ const experiences = [
     title: "VIP Practicum SWE Intern",
     company: "Educational Technology Startup",
     location: "Philadelphia, PA",
-    duration: "08/2022 - 08/2023",
     description: [
       "Developed machine learning algorithms leveraging scikit-learn and TensorFlow to detect key variable trends, enabling personalized learning plans for students with autism.",
       "Engineered a full-stack iOS application using Swift, CoreML, and ARKit for interactive educational games, serving as the primary product for the startup.",
@@ -217,7 +215,6 @@ const experiences = [
     title: "Analyst",
     company: "Wharton Analytics Fellows",
     location: "Philadelphia, PA",
-    duration: "2023",
     description: [
       "Consulted for Fox Entertainment to develop sophisticated customer segmentation models using machine learning for content engagement optimization on Hulu",
       "Analyzed viewing patterns and engagement metrics to identify distinct customer segments",
@@ -235,7 +232,6 @@ const experiences = [
     title: "Teaching Assistant",
     company: "University of Pennsylvania",
     location: "Philadelphia, PA",
-    duration: "2023 - Present",
     description: [
       "Teaching Assistant for CIS 3200 (Advanced Algorithms) and CIS 5200 (Machine Learning)",
       "Conduct office hours and recitations for over 350 students",
@@ -252,12 +248,11 @@ const experiences = [
     title: "Software Team Member",
     company: "Penn Aerial Robotics",
     location: "Philadelphia, PA",
-    duration: "2022 - Present",
     description: [
       "Developed and optimized software algorithms for drone navigation and object detection",
       "Integrated sensor data and machine learning techniques for enhanced autonomous decision-making",
       "Participated in multiple autonomous competitions including SAE Aero Design, PADA Competition, and Mission 10 Competition",
-      "Implemented precise control and stability systems for competitive drone operations"
+     
     ],
     technologies: ["Python", "Computer Vision", "Robotics", "Machine Learning", "Sensor Integration"],
     achievements: [
@@ -280,13 +275,13 @@ const projects = [
     "detailed_description": "Built a scalable distributed search engine from scratch on AWS EC2 with a custom built multi-threaded HTTP server. Implements PageRank and TF-IDF ranking, using AWS S3 for content storage. Features real-time indexing, load balancing, and comprehensive monitoring through a responsive search interface.",
     "tech": ["Java", "HTML/CSS", "AWS", "PageRank", "TF-IDF"],
     "features": [
-      "Multi-threaded web crawler with robots.txt compliance and rate limiting",
+      "Development of web server, crawler, indexer, and analytics components from scratch",
       "Distributed architecture with horizontal scalability",
       "Real-time indexing and search with PageRank scoring",
       "Advanced caching system with fault-tolerant, custom developed key-value store",
       "Developed analytics engine with distributed RDD operations (join, fold, distinct)",
       "Real-time monitoring and responsive search interface",
-      "Development of web server, crawler, indexer, and analytics components from scratch",
+      "Multi-threaded web crawler with robots.txt compliance and rate limiting",
       "URL corpus of over a million pages"
     ],
     "github": "https://github.com/aroy12345/Upgraded-Engine"
