@@ -80,7 +80,7 @@ const Portfolio = () => {
     degrees: [
       {
         title: "M.S.E. Robotics",
-        gpa: "3.9/4.00",
+        gpa: "3.90/4.00",
         courses: [
           "Advanced Robotics",
           "Machine Learning/Perception",
@@ -91,7 +91,7 @@ const Portfolio = () => {
       {
         title: "B.S.E. Computer Science",
         concentration: "Artificial Intelligence",
-        gpa: "3.9/4.00",
+        gpa: "3.85/4.00",
         courses: [
           "Analysis of Algorithms",
           "Data Structures",
@@ -114,7 +114,6 @@ const Portfolio = () => {
       },
       {
         title: "B.S. Business Administration (Wharton)",
-        gpa: "3.8/4.00",
         concentration: "Statistics & Finance",
         courses: [
           "Big Data Analytics",
@@ -154,6 +153,19 @@ const Portfolio = () => {
 
   
 const experiences = [
+  {
+    title: "Incoming Software Engineering Intern",
+    company: "Palantir Technologies",
+    location: "New York, New York",
+    description: [
+      "Palantir Gotham Team"
+    ],
+    technologies: ["Java", "Go", "TBD"],
+    achievements: [
+      "Exciting Stuff Coming!"
+    ],
+    imagePlaceholder: "/images/Honeywell.png"
+  },
   {
     title: "AI/ML Research Intern",
     company: "Honeywell Aerospace",
@@ -287,6 +299,30 @@ const projects = [
     "github": "https://github.com/aroy12345/Upgraded-Engine"
   },
   {
+    "title": "Robotic Block Stacking System",
+    media: {
+      images: [
+        `${process.env.PUBLIC_URL}/images/Robot2.png`,
+        `${process.env.PUBLIC_URL}/images/Robot1.png`,
+        `${process.env.PUBLIC_URL}/images/Robot3.png`,
+      ],
+    },
+    "description": "Developed an advanced robotic manipulation system for automated block stacking using inverse kinematics and computer vision",
+    "detailed_description": "Implemented a comprehensive robotic control system featuring static and dynamic block stacking capabilities. The system utilized inverse kinematics for precise arm control, computer vision for block detection and tracking, and multithreaded computation for optimized performance. Key achievements included developing two distinct approaches for dynamic block manipulation - a sweep-based method and a predictive algorithm - along with robust static stacking using both IK-based and pre-computed configurations. The system demonstrated high reliability with a 93.75% success rate for static stacking and effectively handled dynamic scenarios on a rotating platform.",
+    "tech": ["Python", "ROS", "Computer Vision", "Inverse Kinematics", "Multithreading", "Motion Planning"],
+    "features": [
+      "Real-time block detection and pose estimation using camera feedback",
+      "Advanced inverse kinematics for precise robotic arm control",
+      "Multithreaded computation for concurrent trajectory planning",
+      "Dynamic block interception with predictive tracking",
+      "Robust error handling and collision avoidance",
+      "Automated stack height management and position control",
+      "Integration of both static and dynamic stacking capabilities",
+      "Achievement of 93.75% success rate in static stacking trials"
+    ],
+    "github": "https://github.com/aroy12345/Robotics-Project-Kinematics-Code.git"
+  },
+  {
     "title": "PennOS",
     media: {
       images: [`${process.env.PUBLIC_URL}/images/os.png`], 
@@ -306,6 +342,31 @@ const projects = [
     ],
     "github": "https://github.com"
   },
+  {
+    "title": "FUSE: Vision-Language Model Integration",
+    media: {
+      images: [
+        `${process.env.PUBLIC_URL}/images/model.png`,
+        `${process.env.PUBLIC_URL}/images/DINO1.png`,
+        `${process.env.PUBLIC_URL}/images/DINO2.png`,
+
+      ],
+    },
+    "description": "Novel approach to integrate DINO and CLIP vision models for enhanced semantic understanding and visual recognition",
+    "detailed_description": "Developed FUSE (Fine-tuned Unified Semantic Embeddings), a novel method to augment vision foundation models by integrating DINO's structural understanding with CLIP's semantic capabilities. The system features a lightweight output head that aligns DINO's representations with CLIP's text-conditioned features, improving performance across multiple computer vision tasks. Key achievements included enhanced instance retrieval with improved mAP scores, efficient depth estimation maintaining baseline performance while reducing embedding dimensionality by 33%, and demonstrations of effective cross-modal learning between vision and language models.",
+    "tech": ["PyTorch", "DINO", "CLIP", "Computer Vision", "Deep Learning", "Multimodal ML"],
+    "features": [
+      "Designed and implemented novel autoencoder architecture for embedding alignment",
+      "Achieved superior instance retrieval performance with 0.998 mAP score",
+      "Maintained depth estimation accuracy while reducing embedding dimension by 33%",
+      "Developed custom loss functions combining reconstruction and alignment objectives",
+      "Processed and analyzed large-scale COCO dataset with 118k images",
+      "Implemented efficient training pipeline on GPU infrastructure",
+      "Demonstrated improved semantic understanding in visual tasks",
+      
+    ],
+    "github": "https://github.com/aroy12345/VisionFineTuneModel.git"
+},
   {
     "title": "Edu AI App",
     media: {
