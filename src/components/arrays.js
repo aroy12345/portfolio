@@ -303,7 +303,7 @@ const projects = [
     "Real-time tf2 transforms and coordinate frame management",
     "Competitive racing performance in head-to-head competitions"
   ],
-  "github": "https://github.com/yourusername/roboracer-autonomous-racing"
+  "github": "https://github.com/aroy12345/Final_Race"
 },
 {
   "title": "Mini Minecraft",
@@ -327,7 +327,7 @@ const projects = [
     "Block placement and destruction mechanics with raycasting",
     "Optimized rendering with interleaved VBOs and face culling"
   ],
-  "github": "https://github.com/yourusername/mini-minecraft"
+  "github": "https://github.com/aroy12345/minecraft"
 },
 {
   "title": "PennOS",

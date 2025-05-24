@@ -52,20 +52,24 @@ const MediaGallery = ({ media }) => {
 
   return (
     <div className="mb-6 w-full">
-      <div className="relative aspect-video mb-2 rounded-lg overflow-hidden bg-gray-50">
+      <div className="relative aspect-video mb-2 rounded-lg overflow-hidden bg-white border border-gray-200 shadow-lg">
         {currentItem.type === 'image' ? (
           <img
             src={currentItem.src}
             alt="Project preview"
-            className="w-full h-full object-contain"
+            className="w-full h-full object-contain bg-white"
           />
         ) : (
           <video
             src={currentItem.src}
             controls
             muted
-            className="w-full h-full object-contain"
-            style={{ backgroundColor: '#000' }}
+            className="w-full h-full video-correct-orientation"
+            style={{ 
+              backgroundColor: '#ffffff'
+            }}
+            playsInline
+            preload="metadata"
           >
             Your browser does not support the video tag.
           </video>
@@ -75,15 +79,15 @@ const MediaGallery = ({ media }) => {
           <>
             <button
               onClick={() => setCurrentIndex((prev) => (prev - 1 + mediaItems.length) % mediaItems.length)}
-              className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 bg-black/10 hover:bg-black/20 rounded-full transition-colors"
+              className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-white/90 hover:bg-white rounded-full transition-colors backdrop-blur-sm border border-gray-200 shadow-md"
             >
-              <ChevronLeftIcon className="w-4 h-4 text-white" />
+              <ChevronLeftIcon className="w-4 h-4 text-gray-700" />
             </button>
             <button
               onClick={() => setCurrentIndex((prev) => (prev + 1) % mediaItems.length)}
-              className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-black/10 hover:bg-black/20 rounded-full transition-colors"
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-white/90 hover:bg-white rounded-full transition-colors backdrop-blur-sm border border-gray-200 shadow-md"
             >
-              <ChevronRightIcon className="w-4 h-4 text-white" />
+              <ChevronRightIcon className="w-4 h-4 text-gray-700" />
             </button>
           </>
         )}
@@ -94,8 +98,8 @@ const MediaGallery = ({ media }) => {
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
-              className={`w-1.5 h-1.5 rounded-full transition-colors ${
-                idx === currentIndex ? 'bg-blue-600' : 'bg-gray-300'
+              className={`w-2 h-2 rounded-full transition-colors ${
+                idx === currentIndex ? 'bg-blue-500' : 'bg-gray-300'
               }`}
               title={item.type === 'video' ? 'Video' : 'Image'}
             />
@@ -299,12 +303,12 @@ const ProjectGraph = ({ projects, onProjectClick }) => {
 // Detailed Project View Component
 const ProjectDetailView = ({ project, onBack }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-800 relative overflow-hidden">
       {/* Animated background */}
       <div className="absolute inset-0 opacity-5">
         <div className="grid grid-cols-10 grid-rows-10 h-full w-full">
           {Array.from({ length: 100 }).map((_, i) => (
-            <div key={i} className="border border-blue-500/20 animate-pulse" style={{ animationDelay: `${i * 0.02}s` }} />
+            <div key={i} className="border border-blue-500/10 animate-pulse" style={{ animationDelay: `${i * 0.02}s` }} />
           ))}
         </div>
       </div>
@@ -312,7 +316,7 @@ const ProjectDetailView = ({ project, onBack }) => {
       {/* Back button */}
       <button
         onClick={onBack}
-        className="fixed top-8 left-8 z-50 flex items-center gap-2 bg-black/50 backdrop-blur-md text-white px-4 py-2 rounded-lg hover:bg-black/70 transition-all duration-300 border border-white/20"
+        className="fixed top-8 left-8 z-50 flex items-center gap-2 bg-white/80 backdrop-blur-md text-gray-800 px-4 py-2 rounded-lg hover:bg-white/90 transition-all duration-300 border border-gray-200 shadow-lg"
       >
         <ArrowLeftIcon className="w-5 h-5" />
         Back to Network
@@ -322,10 +326,10 @@ const ProjectDetailView = ({ project, onBack }) => {
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-20">
         {/* Project header */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             {project.title}
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {project.detailed_description}
           </p>
         </div>
@@ -340,7 +344,7 @@ const ProjectDetailView = ({ project, onBack }) => {
         {/* Project details grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {/* Features */}
-          <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10">
+          <div className="bg-white/80 backdrop-blur-md rounded-xl p-6 border border-gray-200 shadow-lg">
             <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center">
                 <ChevronRightIcon className="w-4 h-4 text-white" />
@@ -350,15 +354,15 @@ const ProjectDetailView = ({ project, onBack }) => {
             <ul className="space-y-3">
               {project.features.map((feature, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 mt-2 flex-shrink-0" />
-                  <span className="text-gray-300">{feature}</span>
+                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mt-2 flex-shrink-0" />
+                  <span className="text-gray-700">{feature}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* Technologies */}
-          <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10">
+          <div className="bg-white/80 backdrop-blur-md rounded-xl p-6 border border-gray-200 shadow-lg">
             <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
                 <WrenchIcon className="w-4 h-4 text-white" />
@@ -369,7 +373,7 @@ const ProjectDetailView = ({ project, onBack }) => {
               {project.tech.map((tech, i) => (
                 <span 
                   key={i} 
-                  className="px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full text-sm backdrop-blur-sm"
+                  className="px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 rounded-full text-sm text-gray-800 font-medium"
                 >
                   {tech}
                 </span>
@@ -385,7 +389,7 @@ const ProjectDetailView = ({ project, onBack }) => {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-gradient-to-r from-gray-700 to-gray-800 text-white px-6 py-3 rounded-lg hover:from-gray-600 hover:to-gray-700 transition-all duration-300 border border-white/20"
+              className="flex items-center gap-2 bg-gradient-to-r from-gray-800 to-gray-900 text-white px-6 py-3 rounded-lg hover:from-gray-700 hover:to-gray-800 transition-all duration-300 shadow-lg"
             >
               <GithubIcon className="w-5 h-5" />
               View Code
@@ -396,7 +400,7 @@ const ProjectDetailView = ({ project, onBack }) => {
               href={project.media.demo_video}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-lg hover:from-red-500 hover:to-red-600 transition-all duration-300"
+              className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-3 rounded-lg hover:from-red-400 hover:to-red-500 transition-all duration-300 shadow-lg"
             >
               <PlayIcon className="w-5 h-5" />
               Watch Demo
@@ -407,7 +411,7 @@ const ProjectDetailView = ({ project, onBack }) => {
               href={project.media.live_demo_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-blue-500 hover:to-purple-500 transition-all duration-300"
+              className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-lg hover:from-blue-400 hover:to-purple-400 transition-all duration-300 shadow-lg"
             >
               <ExternalLinkIcon className="w-5 h-5" />
               Live Demo
