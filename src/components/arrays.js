@@ -427,37 +427,45 @@ const projects = [
     "Animation system"
   ],
   "github": "https://github.com/aroy12345/GUIs"
-},
-{
-  "title": "Stock Market Predictor",
-  "description": "Machine learning-based stock market analysis and prediction system",
-  "detailed_description": "Developed a comprehensive stock market prediction system utilizing advanced machine learning techniques and big data processing. Implemented multiple prediction models including Deep Neural Networks and regularized regression models. Created sophisticated data preprocessing pipelines and feature engineering systems for analyzing Japanese stock market data.",
-  "tech": ["Python", "PyTorch", "Pandas", "Scikit-learn", "Deep Learning"],
-  "features": [
-    "Advanced data preprocessing pipeline",
-    "Feature engineering and selection",
-    "Multiple time-series prediction models",
-    "Performance visualization dashboard",
-    "Model comparison and evaluation",
-  ],
-  "github": "https://github.com/aroy12345/StockMarketPredictions.git"
-},
-{
-  "title": "Mini-Compiler",
-  "description": "Assembly language compiler with optimization capabilities",
-  "detailed_description": "Developed a sophisticated compiler system for translating Assembly language into optimized machine code. Implemented comprehensive lexical analysis, syntax parsing, and code optimization phases. Created an efficient intermediate representation for code optimization and generated optimized object files.",
-  "tech": ["C", "Assembly", "Compiler Design"],
-  "features": [
-    "Lexical analysis and tokenization",
-    "Syntax parsing and validation",
-    "Intermediate code generation",
-    "Code optimization techniques",
-    "Object file generation",
-    "Error handling and reporting",
-    "Support for multiple assembly dialects"
-  ]
 }
 ];
+
+
+
+
+// Stock Market Predictor Project
+// {
+//   "title": "Stock Market Predictor",
+//   "description": "Machine learning-based stock market analysis and prediction system",
+//   "detailed_description": "Developed a comprehensive stock market prediction system utilizing advanced machine learning techniques and big data processing. Implemented multiple prediction models including Deep Neural Networks and regularized regression models. Created sophisticated data preprocessing pipelines and feature engineering systems for analyzing Japanese stock market data.",
+//   "tech": ["Python", "PyTorch", "Pandas", "Scikit-learn", "Deep Learning"],
+//   "features": [
+//     "Advanced data preprocessing pipeline",
+//     "Feature engineering and selection", 
+//     "Multiple time-series prediction models",
+//     "Performance visualization dashboard",
+//     "Model comparison and evaluation",
+//   ],
+//   "github": "https://github.com/aroy12345/StockMarketPredictions.git"
+// },
+
+// Mini-Compiler Project
+// {
+//   "title": "Mini-Compiler",
+//   "description": "Assembly language compiler with optimization capabilities",
+//   "detailed_description": "Developed a sophisticated compiler system for translating Assembly language into optimized machine code. Implemented comprehensive lexical analysis, syntax parsing, and code optimization phases. Created an efficient intermediate representation for code optimization and generated optimized object files.",
+//   "tech": ["C", "Assembly", "Compiler Design"],
+//   "features": [
+//     "Lexical analysis and tokenization",
+//     "Syntax parsing and validation", 
+//     "Intermediate code generation",
+//     "Code optimization techniques",
+//     "Object file generation",
+//     "Error handling and reporting",
+//     "Support for multiple assembly dialects"
+//   ]
+// }
+
 
 const awards = [
 {
