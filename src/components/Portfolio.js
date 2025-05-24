@@ -231,7 +231,7 @@ const ProjectGraph = ({ projects, onProjectClick }) => {
       </svg>
 
       {/* Title */}
-      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20">
+      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 z-20">
         <h2 className="text-4xl font-bold text-gray-800 mb-2 text-center">
           Project <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Network</span>
         </h2>
