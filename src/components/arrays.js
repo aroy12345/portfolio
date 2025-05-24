@@ -211,7 +211,7 @@ const projects = [
   },
   "description": "Cloud-based web search engine using AWS EC2, featuring custom multi-threaded web server and distributed crawler",
   "short_description": "Scalable distributed search engine built on AWS with custom multi-threaded HTTP server, PageRank, and TF-IDF.",
-  "detailed_description": "Built a scalable distributed search engine from scratch on AWS EC2 with a custom built multi-threaded HTTP server. Implements PageRank and TF-IDF ranking, using AWS S3 for content storage. Features real-time indexing, load balancing, and comprehensive monitoring through a responsive search interface.",
+  "detailed_description": "Built a scalable distributed search engine entirely from scratch on AWS EC2, including a custom multi-threaded HTTP server, web crawler, key-value store, indexer, PageRank algorithm, and analytics engine. Developed distributed architecture processing 1M+ pages with ethical crawling and robots.txt compliance, implementing custom RDD operations (join, fold, distinct) for data processing and result ranking through a responsive search interface with comprehensive monitoring.",
   "tech": ["Java", "HTML/CSS", "AWS", "PageRank", "TF-IDF"],
   "features": [
     "Development of web server, crawler, indexer, and analytics components from scratch",
