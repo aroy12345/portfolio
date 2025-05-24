@@ -64,7 +64,11 @@ const MediaGallery = ({ media }) => {
             src={currentItem.src}
             controls
             muted
-            className="w-full h-full video-correct-orientation"
+            className={`w-full h-full ${
+              currentItem.src.includes('Racing') 
+                ? 'video-racing-car-orientation' 
+                : 'video-correct-orientation'
+            }`}
             style={{ 
               backgroundColor: '#ffffff'
             }}
