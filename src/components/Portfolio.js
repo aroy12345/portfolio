@@ -12,7 +12,9 @@ import {
   CodeIcon,
   WrenchIcon,
   AwardIcon,
-  GraduationCapIcon
+  GraduationCapIcon,
+  ArrowLeftIcon,
+  ZoomInIcon
 } from 'lucide-react';
 
 import { projects, experiences, skills, education, awards } from './arrays';
@@ -104,9 +106,324 @@ const MediaGallery = ({ media }) => {
   );
 };
 
+// New Project Graph Component
+const ProjectGraph = ({ projects, onProjectClick }) => {
+  const [hoveredProject, setHoveredProject] = useState(null);
+
+  // Generate positions for circles in a network-like pattern
+  const generateCirclePositions = (count) => {
+    const positions = [];
+    const centerX = window.innerWidth / 2;  // Use full viewport width
+    const centerY = 500;  // Move center down more to avoid title overlap (was 450)
+    const radius = Math.min(window.innerWidth * 0.3, 350);  // Slightly smaller to prevent cutoff
+    
+    // Main ring
+    for (let i = 0; i < Math.min(count, 8); i++) {
+      const angle = (i * 2 * Math.PI) / Math.min(count, 8);
+      positions.push({
+        x: centerX + radius * Math.cos(angle),
+        y: centerY + radius * Math.sin(angle),
+        size: 120 + Math.random() * 20  // Increased size for text
+      });
+    }
+    
+    // Inner ring for remaining projects
+    for (let i = 8; i < count; i++) {
+      const angle = ((i - 8) * 2 * Math.PI) / (count - 8);
+      const innerRadius = Math.min(window.innerWidth * 0.15, 180);  // Slightly smaller inner radius
+      positions.push({
+        x: centerX + innerRadius * Math.cos(angle),
+        y: centerY + innerRadius * Math.sin(angle),
+        size: 100 + Math.random() * 15  // Increased size for text
+      });
+    }
+    
+    return positions;
+  };
+
+  const positions = generateCirclePositions(projects.length);
+
+  const getProjectColor = (index) => {
+    const colors = [
+      'from-blue-500 to-purple-600',
+      'from-green-500 to-blue-500',
+      'from-purple-500 to-pink-500',
+      'from-orange-500 to-red-500',
+      'from-teal-500 to-green-500',
+      'from-indigo-500 to-purple-500',
+      'from-pink-500 to-rose-500',
+      'from-cyan-500 to-blue-500',
+      'from-emerald-500 to-teal-500',
+      'from-violet-500 to-purple-500',
+      'from-amber-500 to-orange-500'
+    ];
+    return colors[index % colors.length];
+  };
+
+  return (
+    <div className="relative w-full min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 overflow-hidden" style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', paddingTop: '2rem' }}>
+      {/* Animated background grid */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="grid grid-cols-20 grid-rows-20 h-full w-full">
+          {Array.from({ length: 400 }).map((_, i) => (
+            <div key={i} className="border border-blue-500/10 animate-pulse" style={{ animationDelay: `${i * 0.01}s` }} />
+          ))}
+        </div>
+      </div>
+
+      {/* Connection lines */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none">
+        {positions.map((pos, i) => (
+          positions.slice(i + 1).map((otherPos, j) => {
+            const distance = Math.sqrt(Math.pow(pos.x - otherPos.x, 2) + Math.pow(pos.y - otherPos.y, 2));
+            if (distance < Math.min(window.innerWidth * 0.35, 450)) {  // Scale connection distance with viewport
+              return (
+                <line
+                  key={`${i}-${j}`}
+                  x1={pos.x}
+                  y1={pos.y}
+                  x2={otherPos.x}
+                  y2={otherPos.y}
+                  stroke="url(#connectionGradient)"
+                  strokeWidth="2"
+                  opacity="0.4"
+                  className="animate-pulse"
+                />
+              );
+            }
+            return null;
+          })
+        )).flat()}
+        <defs>
+          <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#3B82F6" />
+            <stop offset="100%" stopColor="#8B5CF6" />
+          </linearGradient>
+        </defs>
+      </svg>
+
+      {/* Title */}
+      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20">
+        <h2 className="text-4xl font-bold text-gray-800 mb-2 text-center">
+          Project <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Network</span>
+        </h2>
+        <p className="text-gray-600 text-center">Click any node to explore the project</p>
+      </div>
+
+      {/* Project circles */}
+      {projects.map((project, index) => {
+        const position = positions[index];
+        const isHovered = hoveredProject === index;
+        
+        return (
+          <div
+            key={index}
+            className={`absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all duration-500 hover:scale-110 ${
+              isHovered ? 'z-30 scale-110' : 'z-10'
+            }`}
+            style={{
+              left: position.x,
+              top: position.y,
+              width: position.size,
+              height: position.size
+            }}
+            onMouseEnter={() => setHoveredProject(index)}
+            onMouseLeave={() => setHoveredProject(null)}
+            onClick={() => onProjectClick(project)}
+          >
+            {/* Outer glow */}
+            <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${getProjectColor(index)} opacity-20 blur-md animate-pulse`} />
+            
+            {/* Main circle */}
+            <div className={`relative w-full h-full rounded-full bg-gradient-to-r ${getProjectColor(index)} flex flex-col items-center justify-center border-2 border-white/30 shadow-2xl transition-all duration-300 hover:border-white/60 hover:shadow-3xl p-2`}>
+              {/* Project name */}
+              <div className="text-white font-bold text-center leading-tight drop-shadow-lg">
+                <div className="text-xs mb-1 opacity-95">
+                  {project.title.split(' ').slice(0, 2).join(' ')}
+                </div>
+                {project.title.split(' ').length > 2 && (
+                  <div className="text-xs opacity-85">
+                    {project.title.split(' ').slice(2).join(' ')}
+                  </div>
+                )}
+              </div>
+              
+              {/* Hover overlay */}
+              {isHovered && (
+                <div className="absolute inset-0 bg-black/20 rounded-full flex items-center justify-center">
+                  <ZoomInIcon className="w-6 h-6 text-white" />
+                </div>
+              )}
+            </div>
+
+            {/* Enhanced tooltip */}
+            {isHovered && (
+              <div className="absolute -top-20 left-1/2 transform -translate-x-1/2 bg-white/95 text-gray-800 px-4 py-3 rounded-lg text-sm backdrop-blur-sm border border-gray-200 shadow-xl max-w-xs">
+                <div className="font-semibold">{project.title}</div>
+                <div className="text-xs text-gray-600 mt-1">{project.description}</div>
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-white/95" />
+              </div>
+            )}
+
+            {/* Animated particles */}
+            <div className="absolute inset-0 pointer-events-none">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-1 h-1 bg-white rounded-full animate-ping opacity-80"
+                  style={{
+                    left: `${20 + i * 30}%`,
+                    top: `${20 + i * 30}%`,
+                    animationDelay: `${i * 0.5}s`,
+                    animationDuration: '2s'
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        );
+      })}
+
+      {/* Central hub */}
+      <div 
+        className="absolute transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center border-4 border-white/50 shadow-2xl z-20"
+        style={{ left: window.innerWidth / 2, top: '500px' }}
+      >
+        <CodeIcon className="w-10 h-10 text-white" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 opacity-30 blur-lg animate-pulse" />
+      </div>
+    </div>
+  );
+};
+
+// Detailed Project View Component
+const ProjectDetailView = ({ project, onBack }) => {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white relative overflow-hidden">
+      {/* Animated background */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="grid grid-cols-10 grid-rows-10 h-full w-full">
+          {Array.from({ length: 100 }).map((_, i) => (
+            <div key={i} className="border border-blue-500/20 animate-pulse" style={{ animationDelay: `${i * 0.02}s` }} />
+          ))}
+        </div>
+      </div>
+
+      {/* Back button */}
+      <button
+        onClick={onBack}
+        className="fixed top-8 left-8 z-50 flex items-center gap-2 bg-black/50 backdrop-blur-md text-white px-4 py-2 rounded-lg hover:bg-black/70 transition-all duration-300 border border-white/20"
+      >
+        <ArrowLeftIcon className="w-5 h-5" />
+        Back to Network
+      </button>
+
+      {/* Main content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-20">
+        {/* Project header */}
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            {project.title}
+          </h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            {project.detailed_description}
+          </p>
+        </div>
+
+        {/* Media Gallery */}
+        {(project.media?.images || project.media?.demo_video || project.media?.demo_videos) && (
+          <div className="mb-12">
+            <MediaGallery media={project.media} />
+          </div>
+        )}
+
+        {/* Project details grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          {/* Features */}
+          <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10">
+            <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center">
+                <ChevronRightIcon className="w-4 h-4 text-white" />
+              </div>
+              Key Features
+            </h3>
+            <ul className="space-y-3">
+              {project.features.map((feature, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 mt-2 flex-shrink-0" />
+                  <span className="text-gray-300">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Technologies */}
+          <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10">
+            <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                <WrenchIcon className="w-4 h-4 text-white" />
+              </div>
+              Technologies
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {project.tech.map((tech, i) => (
+                <span 
+                  key={i} 
+                  className="px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full text-sm backdrop-blur-sm"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Action buttons */}
+        <div className="flex flex-wrap gap-4 justify-center">
+          {project.github && (
+            <a 
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-gradient-to-r from-gray-700 to-gray-800 text-white px-6 py-3 rounded-lg hover:from-gray-600 hover:to-gray-700 transition-all duration-300 border border-white/20"
+            >
+              <GithubIcon className="w-5 h-5" />
+              View Code
+            </a>
+          )}
+          {project.media?.demo_video && (
+            <a 
+              href={project.media.demo_video}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-lg hover:from-red-500 hover:to-red-600 transition-all duration-300"
+            >
+              <PlayIcon className="w-5 h-5" />
+              Watch Demo
+            </a>
+          )}
+          {project.media?.live_demo_url && (
+            <a 
+              href={project.media.live_demo_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-blue-500 hover:to-purple-500 transition-all duration-300"
+            >
+              <ExternalLinkIcon className="w-5 h-5" />
+              Live Demo
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('about');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isProjectDetailView, setIsProjectDetailView] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -116,7 +433,21 @@ const Portfolio = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  
+  const handleProjectClick = (project) => {
+    setSelectedProject(project);
+    setIsProjectDetailView(true);
+  };
+
+  const handleBackToGraph = () => {
+    setIsProjectDetailView(false);
+    setSelectedProject(null);
+  };
+
+  // If in project detail view, render only the project detail
+  if (isProjectDetailView && selectedProject) {
+    return <ProjectDetailView project={selectedProject} onBack={handleBackToGraph} />;
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
       {/* Header */}
@@ -233,7 +564,7 @@ const Portfolio = () => {
         <div className="relative w-full md:w-1/2 flex justify-center">
         <img 
           src={`${process.env.PUBLIC_URL}/images/profile.png`}
-          alt="Aryan Roy - Profile Picture" 
+          alt="Aryan Roy Profile" 
           className="w-80 h-80 rounded-full object-cover shadow-lg hover:shadow-xl transition-shadow duration-300"
         />
       </div>
@@ -251,6 +582,7 @@ const Portfolio = () => {
   <div className="relative overflow-hidden max-w-4xl mx-auto bg-[#02154F] rounded-full">
     <img 
       src={`${process.env.PUBLIC_URL}/images/grasp.png`}
+      alt="University of Pennsylvania GRASP Lab"
       className="w-full object-contain rounded-full"
       style={{ 
         minHeight: "200px",
@@ -382,87 +714,7 @@ const Portfolio = () => {
 
        {/* Projects Section */}
 {activeSection === 'projects' && (
-  <div className="grid grid-cols-1 gap-8">
-    {projects.map((project, index) => (
-      <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-        {/* Media Section - Added at the top */}
-        {(project.media?.images || project.media?.demo_video || project.media?.demo_videos) && (
-          <div className="w-full">
-            <MediaGallery media={project.media} />
-          </div>
-        )}
-
-        <div className="flex flex-col md:flex-row">
-          <div className="p-8 flex-1">
-            <div className="flex items-center gap-4 mb-4">
-              <CodeIcon className="w-8 h-8 text-blue-600" />
-              <h3 className="text-2xl font-bold text-gray-800">{project.title}</h3>
-            </div>
-            <p className="text-gray-600 mb-4">{project.detailed_description}</p>
-            
-            <div className="mb-6">
-              <h4 className="font-semibold text-gray-700 mb-3">Key Features:</h4>
-              <ul className="space-y-2">
-                {project.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <ChevronRightIcon className="w-5 h-5 text-blue-500 flex-shrink-0 mt-1" />
-                    <span className="text-gray-600">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mb-6">
-              <h4 className="font-semibold text-gray-700 mb-3">Technologies:</h4>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech, i) => (
-                  <span key={i} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              {project.github && (
-                <a 
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors duration-300"
-                >
-                  <GithubIcon className="w-5 h-5" />
-                  <span>View Code</span>
-                </a>
-              )}
-              {project.media?.demo_video && (
-                <a 
-                  href={project.media.demo_video}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors duration-300"
-                >
-                  <PlayIcon className="w-5 h-5" />
-                  <span>Watch Demo</span>
-                </a>
-              )}
-              {project.media?.live_demo_url && (
-                <a 
-                  href={project.media.live_demo_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors duration-300"
-                >
-                  <ExternalLinkIcon className="w-5 h-5" />
-                  <span>Live Demo</span>
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
+  <ProjectGraph projects={projects} onProjectClick={handleProjectClick} />
 )}
        
         {/* Skills Section */}
