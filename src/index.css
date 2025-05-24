@@ -53,7 +53,7 @@ code {
 }
 
 /* Video orientation fix */
-.video-correct-orientation {
+video.video-correct-orientation {
   transform: none !important;
   -webkit-transform: none !important;
   -moz-transform: none !important;

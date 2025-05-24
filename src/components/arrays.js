@@ -282,7 +282,7 @@ const projects = [
     ],
     demo_videos: [
       `${process.env.PUBLIC_URL}/images/Racing.mov`,
-     `${process.env.PUBLIC_URL}/images/Racing2.mov`,
+      `${process.env.PUBLIC_URL}/images/Racing2.mov`,
     
     ]
   },
