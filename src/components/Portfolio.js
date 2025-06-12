@@ -666,7 +666,7 @@ const Portfolio = () => {
             <p className="text-gray-500 mb-6">{exp.duration}</p>
             
             <div className="mb-6">
-              <h4 className="font-semibold text-gray-700 mb-3">Responsibilities:</h4>
+              <h4 className="font-semibold text-gray-700 mb-3">Key Contributions:</h4>
               <ul className="space-y-3">
                 {exp.description.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
@@ -678,7 +678,7 @@ const Portfolio = () => {
             </div>
 
             <div className="mb-6">
-              <h4 className="font-semibold text-gray-700 mb-3">Key Achievements:</h4>
+              <h4 className="font-semibold text-gray-700 mb-3">Notable Achievements:</h4>
               <ul className="space-y-3">
                 {exp.achievements.map((achievement, i) => (
                   <li key={i} className="flex items-start gap-3">
