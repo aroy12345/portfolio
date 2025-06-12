@@ -28,17 +28,6 @@ const education = {
       ]
     },
     {
-      title: "B.A. Mathematics",
-      gpa: "3.90/4.00",
-      courses: [
-        "Probability",
-        "Applied Probability Models",
-        "Statistical Inference",
-        "Real Analysis",
-        "Advanced Linear Algebra"
-      ]
-    },
-    {
       title: "B.S. Business Administration (Wharton)",
       concentration: "Statistics & Finance",
       courses: [
@@ -82,7 +71,7 @@ const experiences = [
 {
   title: "Software Engineering Intern",
   company: "Palantir Technologies",
-  location: "Denver, Colorado",
+  location: "Denver, CO",
   description: [
     "Palantir Foundry Team - Embedded Ontology"
   ],
@@ -95,7 +84,7 @@ const experiences = [
 {
   title: "AI/ML Research Intern",
   company: "Honeywell Aerospace",
-  location: "Plymouth, Minnesota",
+  location: "Plymouth, MN",
   description: [
     "Developed advanced sensor fusion and velocity prediction models integrated with Kalman Filters to enhance drone navigation systems, achieving an 18% improvement in trajectory estimation accuracy.",
     "Implemented Allan Variance analysis techniques in Python to characterize and mitigate gyroscope sensor errors, resulting in a 10% reduction in angular random walk and bias instability.",
@@ -130,8 +119,7 @@ const experiences = [
 {
   title: "University Student Research Lead",
   company: "University of Pennsylvania",
-  location: "Philadelphia, PA; Denver, Colorado",
-  duration: "08/2021 - Present",
+  location: "Philadelphia, PA",
   description: [
     "Secured a $5,000 grant to enhance kidney donor-recipient matching algorithms, leading to a 15% increase in low-risk transplant identification through improved FIBERS algorithm implementation.",
     "Researched and implemented deep learning algorithms for medical image reconstruction, achieving a 10% increase in image resolution.",
@@ -150,7 +138,7 @@ const experiences = [
   ]
 },
 {
-  title: "Analyst",
+  title: "Data Science Analyst",
   company: "Wharton Analytics Fellows",
   location: "Philadelphia, PA",
   description: [
@@ -172,14 +160,14 @@ const experiences = [
   location: "Philadelphia, PA",
   description: [
     "Teaching Assistant for CIS 3200 (Advanced Algorithms) and CIS 5200 (Machine Learning)",
-    "Conduct office hours and recitations for over 350 students",
-    "Grade assignments and provide detailed feedback",
-    "Create and review course materials"
+    "Conducted office hours and recitations for over 350 students",
+    "Graded assignments and provided detailed feedback",
+    "Created and reviewed course materials"
   ],
   technologies: ["Algorithms", "Machine Learning", "Python", "Teaching"],
   achievements: [
-    "Supporting 350+ students across two courses",
-    "Contributing to course material development"
+    "Supported 350+ students across two courses",
+    "Contributed to course material development"
   ]
 },
 {
@@ -190,7 +178,6 @@ const experiences = [
     "Developed and optimized software algorithms for drone navigation and object detection",
     "Integrated sensor data and machine learning techniques for enhanced autonomous decision-making",
     "Participated in multiple autonomous competitions including SAE Aero Design, PADA Competition, and Mission 10 Competition",
-   
   ],
   technologies: ["Python", "Computer Vision", "Robotics", "Machine Learning", "Sensor Integration"],
   achievements: [
@@ -251,7 +238,7 @@ const projects = [
   "github": "https://github.com/aroy12345/Robotics-Project-Kinematics-Code.git"
 },
 {
-  "title": "FUSE: Vision-Language Model Integration",
+  "title": "FUSE: Vision-Language Model Fusion",
   media: {
     images: [
       `${process.env.PUBLIC_URL}/images/model.png`,
@@ -270,8 +257,7 @@ const projects = [
     "Developed custom loss functions combining reconstruction and alignment objectives",
     "Processed and analyzed large-scale COCO dataset with 118k images",
     "Implemented efficient training pipeline on GPU infrastructure",
-    "Demonstrated improved semantic understanding in visual tasks",
-    
+    "Demonstrated improved semantic understanding in visual tasks"
   ],
   "github": "https://github.com/aroy12345/VisionFineTuneModel.git"
 }, {

@@ -494,7 +494,7 @@ const Portfolio = () => {
               <a href="https://www.linkedin.com/in/aryan-roy-837447263" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                 <LinkedinIcon className="w-6 h-6" />
               </a>
-              <a href="mailto:aryanroy@seas.upenn.edu" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+              <a href="mailto:aryanroy@wharton.upenn.edu" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                 <MailIcon className="w-6 h-6" />
               </a>
             </div>
@@ -546,14 +546,9 @@ const Portfolio = () => {
               Aryan Roy
             </h1>
             <h3 className="text-2xl text-gray-700 font-semibold mb-4">
-              Student, Builder, Researcher, Engineer
             </h3>
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Through my work and research, I strive to develop solutions that are not only technologically 
-              advanced but also create meaningful impact. My multidisciplinary background in computer science, 
-              mathematics, economics, and robotics enables me to approach problems from multiple angles and 
-              deliver comprehensive solutions. I aim to 
-              create innovative software solutions that have an impact on diverse domains, from healthcare and automation to finance and environmental sustainability.
+            I aim to work towards building software that solves real problems and makes people's lives easier. With a background spanning computer science, mathematics, economics, and robotics, I enjoy tackling challenges from different perspectives. I'm excited to grow as an engineer and contribute to projects in areas like healthcare technology, automation, fintech, and sustainability - wherever I can learn something new and make a positive difference.
             </p>
           </div>
           
@@ -625,18 +620,24 @@ const Portfolio = () => {
 
       <h3 className="text-2xl font-bold text-gray-800">{education.university}</h3>
       <p className="text-blue-600 font-medium mb-6">{education.duration}</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {education.degrees.map((degree, index) => (
           <div key={index} className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors duration-300">
             <h4 className="text-xl font-semibold text-gray-800 mb-2">{degree.title}</h4>
+            {degree.concentration && (
+              <p className="text-blue-600 font-medium mb-2">Concentration: {degree.concentration}</p>
+            )}
             {degree.gpa && (
               <p className="text-green-600 font-medium mb-3">GPA: {degree.gpa}</p>
             )}
             <div className="space-y-2">
               <h5 className="font-medium text-gray-700">Key Courses:</h5>
-              <ul className="list-disc list-inside text-gray-600 space-y-1">
+              <ul className="space-y-1">
                 {degree.courses.map((course, i) => (
-                  <li key={i}>{course}</li>
+                  <li key={i} className="flex items-start gap-2">
+                    <div className="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
+                    <span className="text-gray-600 text-sm">{course}</span>
+                  </li>
                 ))}
               </ul>
             </div>
