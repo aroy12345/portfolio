@@ -868,7 +868,7 @@ const Portfolio = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-600">© 2024 Aryan Roy.</p>
             <div className="flex gap-6">
-              <a href="https://github.com" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+              <a href="https://github.com/aroy12345" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                 <GithubIcon className="w-6 h-6" />
               </a>
               <a href="https://www.linkedin.com/in/aryan-roy-837447263" className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
